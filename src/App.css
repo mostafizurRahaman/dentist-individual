@@ -45,7 +45,15 @@
   border: none;
   outline: none;
   box-sizing: border-box;
+  transition: 0.5s all ease-in-out;
   display: block;
+  -webkit-transition: 0.5s all ease-in-out;
+  -moz-transition: 0.5s all ease-in-out;
+  -ms-transition: 0.5s all ease-in-out;
+  -o-transition: 0.5s all ease-in-out;
+}
+.inputBox:focus{
+  border: 2px solid black;
 }
 .submitButton{
   box-shadow: inset 10px 10px 10px rgb(246, 96, 2), inset -10px -10px 10px rgb(255, 102, 0);
