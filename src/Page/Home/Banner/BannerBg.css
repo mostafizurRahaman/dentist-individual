@@ -1,0 +1,7 @@
+.bannerBg{
+   background: linear-gradient( 90deg, rgb(4, 114, 142), rgba(31, 41, 55, 0.0)), url(../../../Assets/bannerBackground.jpg) no-repeat; 
+   background-size: cover;
+   background-position: center center;
+   background-attachment: fixed;
+   
+}
