@@ -1,0 +1,9 @@
+.showRouteBg{
+  background: linear-gradient(150deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)), url("../../../Assets/bannerBackground.jpg");
+  color: white;
+   height: 300px;
+   background-size: cover;
+   background-position: center center;
+   background-attachment: fixed;
+   
+}

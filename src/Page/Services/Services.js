@@ -1,9 +1,10 @@
 import React from 'react';
+import ShowRoute from '../Shared/ShowRoute/ShowRoute';
 
 const Services = () => {
    return (
       <div>
-         <h1>Services</h1>
+         <ShowRoute title="All Services" first='Services'></ShowRoute>
       </div>
    );
 };

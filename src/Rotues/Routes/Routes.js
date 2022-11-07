@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layout/Main/Main";
+import AddServices from "../../Page/AddServices/AddServices";
 import Home from "../../Page/Home/Home/Home";
 import Login from "../../Page/Login/Login";
 import MyReviews from "../../Page/MyReviews/MyReviews";
@@ -36,6 +37,10 @@ const Routes = createBrowserRouter([
          {
             path: '/my-reviews', 
             element: <MyReviews></MyReviews>
+         }, 
+         {
+            path: '/add-services', 
+            element: <AddServices></AddServices>
          }
       ]
    }
