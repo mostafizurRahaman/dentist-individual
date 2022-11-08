@@ -5,6 +5,7 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import "react-photo-view/dist/react-photo-view.css";
 import { TiStarFullOutline, TiStarOutline } from 'react-icons/ti';
 import ReviewForm from '../ReviewForm/ReviewForm';
+import useTitle from '../../Hooks/useTitle';
 
 
 const ServiceDetails = () => {
@@ -12,6 +13,7 @@ const ServiceDetails = () => {
    const singleService = useLoaderData()
    const {service, image, price, ratings, description, _id} = singleService; 
    const remaingRatings = 5- ratings; 
+   useTitle(service);
    return (
       <div>
          <section className='grid grid-cols-1 md:grid-cols-2 justify-center gap-10 px-12 mt-5 '>

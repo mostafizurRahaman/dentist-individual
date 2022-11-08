@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import useTitle from '../../Hooks/useTitle';
 import ShowRoute from '../Shared/ShowRoute/ShowRoute';
 import SingleServices from '../Shared/SingleService/SingleServices';
 
@@ -10,7 +11,7 @@ const Services = () => {
          .then(data => setServices(data))
          .catch(err => console.log(err))
    }, [])
-   console.log(services);
+   useTitle('Services')
    return (
       <div>
          <ShowRoute title="All Services" first='Services'></ShowRoute>

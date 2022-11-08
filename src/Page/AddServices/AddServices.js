@@ -3,6 +3,7 @@ import ShowRoute from '../Shared/ShowRoute/ShowRoute';
 import toast from 'react-hot-toast';
 import ErrorMessage from '../Shared/ErrorMessage/ErrorMessage';
 import Swal from 'sweetalert2'
+import useTitle from '../../Hooks/useTitle';
 const AddServices = () => {
    const [serviceInfo , setServiceInfo] = useState({
       service: '', 
@@ -121,6 +122,8 @@ const AddServices = () => {
       })
       .catch(err => console.log(err)); 
    }
+
+   useTitle('Add Services')
    return (
       <div>
          <ShowRoute title="Add Service Form" first='Add Services'></ShowRoute>

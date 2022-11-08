@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useTitle from '../../../Hooks/useTitle';
 import SingleServices from '../../Shared/SingleService/SingleServices';
 import Banner from '../Banner/Banner';
 
@@ -11,6 +12,7 @@ const Home = () => {
       .then(data => setServices(data))
       .catch(err => console.log(err))
    }, [])
+   useTitle('Home')
    return (
       <div>
         <Banner></Banner>

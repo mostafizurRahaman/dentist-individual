@@ -4,6 +4,7 @@ import ErrorMessage from '../Shared/ErrorMessage/ErrorMessage';
 import { BsGithub, BsGoogle } from 'react-icons/bs'; 
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'
+import useTitle from '../../Hooks/useTitle';
 const Login = () => {
    const {LogIn,  GithubSignIn, GoogleSignIn} = useContext(AuthContext); 
    const [userInfo, setUserInfo] = useState({ 
@@ -114,6 +115,8 @@ const Login = () => {
          setError({...error, general: err.message})
       }); 
    }
+
+   useTitle('Login');
    return (
       <div className='py-5  w-full registrationBg'>
       <div className='flex items-center flex-col  justify-center ' style={{minHeight: '500px'}}>
