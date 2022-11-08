@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const ReviewForm = () => {
    return (
       <div className='flex items-center flex-col'>
@@ -33,7 +34,7 @@ const ReviewForm = () => {
                 </div>
                <div className='flex flex-col w-full'>
                   <label className='text-xl mb-2'  htmlFor="message">Message</label>
-                  <textarea name="message" className='w-full p-2  border-2 inputBox rounded-xl' id="" cols="30" rows="10"></textarea>
+                  <textarea name="message" className='w-full p-2  border-2 inputBox rounded-xl' id="" cols="30" rows="11"></textarea>
                </div>
             </div>
             <div>
