@@ -5,7 +5,7 @@ import {BsGithub, BsGoogle} from 'react-icons/bs';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import Swal from 'sweetalert2'
 const Register = () => {
-   const {createUser} = useContext(AuthContext); 
+   const {createUser, addInfo, GithubSignIn, GoogleSignIn} = useContext(AuthContext); 
    const [userInfo, setUserInfo] = useState({
       name: '', 
       email:'', 
@@ -113,15 +113,39 @@ const Register = () => {
            'User Created Successfully!',
            'success'
          )
+         handleProfile({displayName: name, photoURL:  image})
          e.target.reset(); 
       })
       .catch(err => console.log(err)); 
    }
-  
+   
+   const handleProfile  = (profile) => {
+      addInfo(profile)
+      .then(()=>{})
+      .catch(err => console.log(err));
+   }
+
+
+   const handleGoogleSignIn = () => {
+      GoogleSignIn()
+      .then(res => {
+         const user = res.user; 
+         console.log(user); 
+      })
+      .catch(err => console.log(err))
+   }
     
+   const handleGithubSignIn = () => {
+      GithubSignIn()
+      .then(res => {
+         const user = res.user; 
+         console.log(user); 
+      })
+      .catch(err => console.log(err)); 
+   }
    return (
-      <div className='py-5'>
-         <div className='flex items-center flex-col  justify-center' style={{minHeight: '500px'}}>
+      <div className='py-5  w-full registrationBg'>
+         <div className='flex items-center flex-col  justify-center ' style={{minHeight: '500px'}}>
             <div className='p-5 w-4/5 lg:w-3/5 rounded-2xl bg-blue-300 ' data-aos="zoom-out-up" >
             <form className=' gap-5 flex flex-col w-full' onSubmit={handleSubmit} >
                <div>
@@ -169,11 +193,11 @@ const Register = () => {
                 
             </form>
             <div className='flex items-center justify-center text-center text-sm mt-5  gap-5'>
-                  <button className='flex items-center justify-center flex-col gap-1  px-5 py-2 bg-white rounded-lg text-red-500'>
+                  <button className='flex items-center justify-center flex-col gap-1  px-5 py-2 bg-white rounded-lg text-red-500' onClick={handleGoogleSignIn}>
                      <BsGoogle></BsGoogle>
                      <p>Google Sign In</p>
                   </button>
-                  <button className='flex items-center justify-center flex-col gap-1  px-5 py-2 bg-white rounded-lg text-red-500'>
+                  <button className='flex items-center justify-center flex-col gap-1  px-5 py-2 bg-white rounded-lg text-red-500' onClick={handleGithubSignIn}>
                      <BsGithub></BsGithub>
                      <p>Github Sign In</p>
                   </button>

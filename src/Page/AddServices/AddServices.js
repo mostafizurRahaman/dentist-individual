@@ -10,7 +10,6 @@ const AddServices = () => {
       image: '', 
       ratings: '', 
       description: '', 
-      
    }); 
    const [error, setError] = useState({
       service: '', 

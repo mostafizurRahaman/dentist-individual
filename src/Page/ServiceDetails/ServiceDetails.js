@@ -7,7 +7,7 @@ import { TiStarFullOutline, TiStarOutline } from 'react-icons/ti';
 import ReviewForm from '../ReviewForm/ReviewForm';
 const ServiceDetails = () => {
    const singleService = useLoaderData()
-   const {service, image, price, ratings, description, _id} = useLoaderData(); 
+   const {service, image, price, ratings, description, _id} = singleService; 
    const remaingRatings = 5- ratings; 
    return (
       <div>

@@ -21,7 +21,7 @@ const Header = () => {
                   <Link to="/my-reviews">MyReviews</Link>
                   <Link to="/add-services">Add Services</Link>
                   <Link>
-                     <img src={user?.photoURL} alt="" className="w-12 h-12 rounded-full" />
+                     <img src={user?.photoURL} alt="" className="w-12 h-12 rounded-full bg-white" />
                   </Link>
                   <FaSignOutAlt className="text-blue-400 text-2xl" onClick={()=> LogOut()}></FaSignOutAlt>
                </>
