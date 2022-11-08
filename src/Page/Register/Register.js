@@ -97,6 +97,7 @@ const Register = () => {
    }
 
    const handleSubmit = (e) =>{
+      setError({...error, general:""})
       e.preventDefault(); 
       const {name, email , image, password} = userInfo; 
       if(!name || !email || !image || !password){
@@ -116,7 +117,9 @@ const Register = () => {
          handleProfile({displayName: name, photoURL:  image})
          e.target.reset(); 
       })
-      .catch(err => console.log(err)); 
+      .catch(err => {
+         setError({...error, general: err.message})
+      }); 
    }
    
    const handleProfile  = (profile) => {
@@ -127,21 +130,27 @@ const Register = () => {
 
 
    const handleGoogleSignIn = () => {
+      setError({...error, general:""})
       GoogleSignIn()
       .then(res => {
          const user = res.user; 
          console.log(user); 
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+         setError({...error, general: err.message})
+      });
    }
     
    const handleGithubSignIn = () => {
+      setError({...error, general:""})
       GithubSignIn()
       .then(res => {
          const user = res.user; 
          console.log(user); 
       })
-      .catch(err => console.log(err)); 
+      .catch(err => {
+         setError({...error, general: err.message})
+      }); 
    }
    return (
       <div className='py-5  w-full registrationBg'>
