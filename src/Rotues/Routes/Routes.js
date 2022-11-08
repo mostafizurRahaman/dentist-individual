@@ -5,6 +5,7 @@ import Home from "../../Page/Home/Home/Home";
 import Login from "../../Page/Login/Login";
 import MyReviews from "../../Page/MyReviews/MyReviews";
 import Register from "../../Page/Register/Register";
+import ServiceDetails from "../../Page/ServiceDetails/ServiceDetails";
 import Services from "../../Page/Services/Services";
 
 
@@ -42,6 +43,15 @@ const Routes = createBrowserRouter([
          {
             path: '/add-services', 
             element: <AddServices></AddServices>
+         }, 
+         {
+            path: '/services/:id', 
+            element: <ServiceDetails></ServiceDetails>, 
+            loader: async({params}) => {
+               
+               console.log(params); 
+               return fetch(`http://localhost:5000/services/${params.id}`)
+            }
          }
       ]
    }
