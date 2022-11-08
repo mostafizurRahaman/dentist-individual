@@ -40,7 +40,6 @@
 
 
 .inputBox{
-  text-transform: capitalize;
   box-shadow: inset 10px 10px 10px rgb(231, 231, 231), inset -10px -10px 10px rgb(255, 255, 255);
   border: none;
   outline: none;
@@ -55,6 +54,7 @@
 .inputBox:focus{
   border: 2px solid black;
 }
+
 .submitButton{
   box-shadow: inset 10px 10px 10px rgb(246, 96, 2), inset -10px -10px 10px rgb(255, 102, 0);
 }
@@ -62,5 +62,6 @@
   box-shadow: inset 10px 10px 10px rgb(0, 0, 0), inset -10px -10px 10px rgb(0, 0, 0);
 }
 .inputBox::placeholder{
-  color: rgb(103, 173, 253)
+  color: rgb(103, 173, 253); 
+  text-transform: capitalize; 
 }
