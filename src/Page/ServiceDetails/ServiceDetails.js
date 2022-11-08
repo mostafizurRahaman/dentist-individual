@@ -1,11 +1,14 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from "react-photo-view";
-
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import "react-photo-view/dist/react-photo-view.css";
 import { TiStarFullOutline, TiStarOutline } from 'react-icons/ti';
 import ReviewForm from '../ReviewForm/ReviewForm';
+
+
 const ServiceDetails = () => {
+   const {user} = useContext(AuthContext); 
    const singleService = useLoaderData()
    const {service, image, price, ratings, description, _id} = singleService; 
    const remaingRatings = 5- ratings; 
@@ -42,7 +45,11 @@ const ServiceDetails = () => {
             </div>
          </section>
          <section>
-            <ReviewForm></ReviewForm>
+            {
+               user?.uid ?  <ReviewForm></ReviewForm> : <div className='my-10  flex items-center justify-center animate-bounce hover:animate-none '>
+                <Link className='bg-blue-500 text-white px-3 py-2 rounded-xl hover:bg-orange-600 duration-1000' to='/login'>  <h4 className='text-2xl'>For writing  a review , Please Login</h4></Link>
+               </div>
+            }
          </section>
       </div>
    );
