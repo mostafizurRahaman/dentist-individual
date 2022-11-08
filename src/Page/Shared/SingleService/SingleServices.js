@@ -30,10 +30,10 @@ const SingleServices = ({ everyService }) => {
                </p>
                <p className="flex text-2xl text-orange-500">
                   {[...Array(ratings).keys()].map((rating) => (
-                     <TiStarFullOutline></TiStarFullOutline>
+                     <TiStarFullOutline key={rating}></TiStarFullOutline>
                   ))}
                   {[...Array(remaingRatings).keys()].map((rating) => (
-                     <TiStarOutline></TiStarOutline>
+                     <TiStarOutline key={rating}></TiStarOutline>
                   ))}
                </p>
             </div>

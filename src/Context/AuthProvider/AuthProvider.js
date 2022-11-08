@@ -5,7 +5,7 @@ import {createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthP
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider()
 const githubProvider = new GithubAuthProvider();
-const AuthContext = createContext(); 
+export const AuthContext = createContext(); 
 
 const AuthProvider = ({children}) => {
    const [user, setUser] = useState(null); 
@@ -43,6 +43,7 @@ const AuthProvider = ({children}) => {
    const mount = onAuthStateChanged(auth, currentUser => {
       setUser(currentUser)
       setLoading(false); 
+      console.log(currentUser);
    })
 
    return ()=>{
@@ -50,7 +51,7 @@ const AuthProvider = ({children}) => {
    }
 
   }, [])
-   const authInfo = {createUser, LogIn, LogOut, GoogleSignIn, GithubSignIn, addInfo}
+   const authInfo = {createUser, LogIn, LogOut, GoogleSignIn, GithubSignIn, addInfo, user}
    return (
     <AuthContext.Provider value={authInfo}>
             {children}

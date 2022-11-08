@@ -31,10 +31,10 @@ const ServiceDetails = () => {
                   <p className='text-3xl capitalize  '>price: ${price}</p>
                   <p className='flex items-center gap-1 justify-center text-2xl text-orange-500'>
                   {[...Array(ratings).keys()].map((rating) => (
-                     <TiStarFullOutline></TiStarFullOutline>
+                     <TiStarFullOutline key={rating}></TiStarFullOutline>
                   ))}
                   {[...Array(remaingRatings).keys()].map((rating) => (
-                     <TiStarOutline></TiStarOutline>
+                     <TiStarOutline key={rating}></TiStarOutline>
                   ))}
                   </p>
                </div>
