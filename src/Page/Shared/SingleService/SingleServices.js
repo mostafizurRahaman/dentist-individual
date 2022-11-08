@@ -10,7 +10,7 @@ const SingleServices = ({ everyService }) => {
    const { service, _id, image, price, ratings, description } = everyService;
    const remaingRatings = 5 - ratings;
    return (
-      <div className="bg-gray-700 text-white p-5 singleService  rounded-md" data-aos='zoom-out-up'>
+      <div className="bg-gray-700 text-white p-5 singleService  rounded-md" data-aos='zoom-in-right'>
          <div className="imgContainer">
             <PhotoProvider >
                <PhotoView src={image}>
