@@ -4,6 +4,7 @@ import { PhotoProvider, PhotoView } from "react-photo-view";
 
 import "react-photo-view/dist/react-photo-view.css";
 import { TiStarFullOutline, TiStarOutline } from 'react-icons/ti';
+import ReviewForm from '../ReviewForm/ReviewForm';
 const ServiceDetails = () => {
    const singleService = useLoaderData()
    const {service, image, price, ratings, description, _id} = useLoaderData(); 
@@ -41,7 +42,7 @@ const ServiceDetails = () => {
             </div>
          </section>
          <section>
-           
+            <ReviewForm></ReviewForm>
          </section>
       </div>
    );
