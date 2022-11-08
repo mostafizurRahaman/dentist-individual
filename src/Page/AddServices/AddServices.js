@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ShowRoute from '../Shared/ShowRoute/ShowRoute';
 import toast from 'react-hot-toast';
 import ErrorMessage from '../Shared/ErrorMessage/ErrorMessage';
+import Swal from 'sweetalert2'
 const AddServices = () => {
    const [serviceInfo , setServiceInfo] = useState({
       service: '', 
@@ -9,13 +10,15 @@ const AddServices = () => {
       image: '', 
       ratings: '', 
       description: '', 
+      
    }); 
    const [error, setError] = useState({
       service: '', 
       price: '', 
       image: '', 
       ratings: '', 
-      description: ''
+      description: '', 
+     
    })
 
 
@@ -91,14 +94,33 @@ const AddServices = () => {
       setError({...error, description:''}); 
       setServiceInfo({...serviceInfo, description})
    }
-   console.log(error)
-   console.log(serviceInfo); 
+
    const handleSubmit = (e) => {
       e.preventDefault(); 
-      if(!serviceInfo.name || !serviceInfo.price || serviceInfo.image || serviceInfo.ratings || serviceInfo.description){
+      const {service, price, image, ratings,description} = serviceInfo; 
+      if(!service || !price || !image || !ratings || !description){
          toast.error('Please Fill the form'); 
          return; 
       }
+      fetch('http://localhost:5000/services', {
+         method: 'POST', 
+         headers: {
+            "content-type": 'application/json', 
+         }, 
+         body: JSON.stringify({service ,price, image, ratings, description })
+      })
+      .then(res => res.json())
+      .then(data =>{        
+         if(data.acknowledged){
+            Swal.fire(
+               'Thank You!',
+               'Your services successfully added!',
+               'success'
+             )
+            e.target.reset(); 
+         }
+      })
+      .catch(err => console.log(err)); 
    }
    return (
       <div>
@@ -144,8 +166,9 @@ const AddServices = () => {
                            error.description &&  <ErrorMessage> {error.description} </ErrorMessage> 
                          }
                         </div>
+                       
                     </div>
-                  <button className='block px-5 text-center text-xl text-white rounded-lg py-2 bg-orange-600 mx-auto submitButton hover:bg-black '>Post </button>
+                  <button className='block px-5 text-center text-xl text-white rounded-lg py-2 bg-orange-600 mx-auto submitButton hover:bg-black ' type='submit'>Post </button>
                </form>
                
              </div>
