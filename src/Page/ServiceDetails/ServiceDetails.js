@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
@@ -6,16 +6,30 @@ import "react-photo-view/dist/react-photo-view.css";
 import { TiStarFullOutline, TiStarOutline } from 'react-icons/ti';
 import ReviewForm from '../ReviewForm/ReviewForm';
 import useTitle from '../../Hooks/useTitle';
+import SingleReview from '../SingleReview/SingleReview';
+import ShowRoute from '../Shared/ShowRoute/ShowRoute';
 
 
 const ServiceDetails = () => {
    const {user} = useContext(AuthContext); 
    const singleService = useLoaderData()
-   const {service, image, price, ratings, description, _id} = singleService; 
+   const {service, image, price, ratings, description , _id} = singleService; 
    const remaingRatings = 5- ratings; 
+   const [reviews, setReviews] = useState([]); 
+   
+   useEffect(()=>{
+      fetch(`http://localhost:5000/reviews/${_id}`)
+      .then(res =>  res.json())
+      .then(data => setReviews(data))
+      .catch(err => console.log(err));  
+   }, [_id, reviews])
+
    useTitle(service);
    return (
       <div>
+         <section>
+            <ShowRoute first={`service / ${service}`}></ShowRoute>
+         </section>
          <section className='grid grid-cols-1 md:grid-cols-2 justify-center gap-10 px-12 mt-5 '>
             <div className=" p-2 bg-blue-500 rounded-2xl flex flex-col">
                <div className='flex-grow'>
@@ -46,13 +60,24 @@ const ServiceDetails = () => {
                <button className="block px-5 text-center text-xl text-white mt-5 py-2 bg-orange-600 mx-auto">Check Out Now</button>               
             </div>
          </section>
+         <section className='p-10 flex flex-col items-center '>
+         <h2 className='text-4xl text-blue-500 before:w-1/2 before:h-1 before:inline-block pb-3  before:absolute inline-block relative before:bottom-0 before:bg-blue-500 text-center my-5  '>Customer Reviews</h2>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-5 gap-y-5 p-5  singleReviewContainer '>
+            {
+               reviews.map(review => <SingleReview key={review._id}  review={review} >
+
+               </SingleReview>)
+             } 
+            </div>
+         </section>
          <section>
             {
-               user?.uid ?  <ReviewForm singleService={singleService} ></ReviewForm> : <div className='my-10  flex items-center justify-center animate-bounce hover:animate-none '>
+               user?.uid ?  <ReviewForm singleService={singleService} reviews={reviews} setReviews={setReviews} ></ReviewForm> : <div className='my-10  flex items-center justify-center animate-bounce hover:animate-none '>
                 <Link className='bg-blue-500 text-white px-3 py-2 rounded-xl hover:bg-orange-600 duration-1000' to='/login'>  <h4 className='text-2xl'>For writing  a review , Please Login</h4></Link>
                </div>
             }
          </section>
+
       </div>
    );
 };

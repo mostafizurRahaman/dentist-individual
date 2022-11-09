@@ -1,10 +1,11 @@
 import { ErrorResponse } from "@remix-run/router";
 import React, { useContext, useState } from "react";
+import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import ErrorMessage from "../Shared/ErrorMessage/ErrorMessage";
 
 
-const ReviewForm = ({singleService}) => {
+const ReviewForm = ({singleService , reviews, setReviews}) => {
    const {user} = useContext(AuthContext); 
    const {service, _id} = singleService; 
    console.log(service, _id); 
@@ -53,6 +54,11 @@ const handleMessage = (e) =>{
       setReviewInfo({...ReviewInfo, message: ''}); 
       return; 
    }
+   if(message.length <35){
+      setError({...error, message: "please write 35 character" }); 
+      setReviewInfo({...ReviewInfo, message:""}); 
+      return; 
+   }
 
    setError({...error, message: ''}); 
    setReviewInfo({...ReviewInfo, message}); 
@@ -69,7 +75,7 @@ const handleSubmit = (e) => {
    }
    setError({...error, general: ""}); 
    console.log({email , reviewer, profile, ratings, message, service_name, service_id}); 
-   fetch('http://localhost:5000/ratings', {
+   fetch('http://localhost:5000/reviews', {
       method: 'POST', 
       headers: {
          "content-type": 'application/json', 
@@ -78,12 +84,23 @@ const handleSubmit = (e) => {
    })
    .then(res => res.json())
    .then(data => {
-      console.log(data); 
+         if(data.acknowledged){
+            Swal.fire(
+               'Thank You!',
+               'For give your feedback!',
+               'success'
+             ); 
+            const totalReviews = [...reviews, {email , reviewer, profile, ratings, message, service_name, service_id}]
+            setReviews(totalReviews); 
+            console.log(totalReviews);
+             e.target.reset(); 
+         } 
    })
    .catch(err => {
       setError({...err, general: err.message}); 
    })
 }
+
 
    return (
       <div className='flex items-center flex-col'>
