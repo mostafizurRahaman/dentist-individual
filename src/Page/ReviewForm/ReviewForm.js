@@ -1,4 +1,3 @@
-import { ErrorResponse } from "@remix-run/router";
 import React, { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
@@ -8,7 +7,6 @@ import ErrorMessage from "../Shared/ErrorMessage/ErrorMessage";
 const ReviewForm = ({singleService , reviews, setReviews}) => {
    const {user} = useContext(AuthContext); 
    const {service, _id} = singleService; 
-   console.log(service, _id); 
    const  [ReviewInfo , setReviewInfo] = useState({
       email: user?.email, 
       reviewer: user?.displayName, 
@@ -104,7 +102,7 @@ const handleSubmit = (e) => {
 
    return (
       <div className='flex items-center flex-col'>
-          <h2 className='text-3xl text-blue-500 before:w-1/2 before:h-1 before:inline-block pb-3  before:absolute inline-block relative before:bottom-0 before:bg-blue-500 text-center my-5  mt-10 '>Add A Review</h2>
+          <h2 className='text-3xl text-blue-500 before:w-1/2 before:h-1 before:inline-block pb-3  before:absolute inline-block relative before:bottom-0 before:bg-blue-500 text-center my-16  mt-10 '>Add A Review</h2>
          <form className='p-5 w-4/5 lg:w-3/5 rounded-2xl bg-blue-300  gap-5 flex flex-col' onSubmit={handleSubmit} style={{ boxShadow: "6px 6px 6px inset rgba(0, 0, 255, 0.3, -6px -6px 6px inset rgba(0, 0, 255, 0.3))"}}>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
                 <div>
@@ -143,7 +141,7 @@ const handleSubmit = (e) => {
                 </div>
                <div className='flex flex-col w-full'>
                   <label className='text-xl mb-2'  htmlFor="message">Message</label>
-                  <textarea name="review" className='w-full p-2  border-2 inputBox rounded-xl' id="" cols="30" rows="11" onBlur={handleMessage} required></textarea>
+                  <textarea name="review" className='w-full p-2  border-2 inputBox rounded-xl' id="" cols="30" rows="14" onBlur={handleMessage} required></textarea>
                   {
                      error?.message && <ErrorMessage>{error.message}</ErrorMessage>
                   }
