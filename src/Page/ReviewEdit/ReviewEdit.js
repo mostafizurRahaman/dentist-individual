@@ -1,11 +1,14 @@
 import React, { useContext, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import useTitle from "../../Hooks/useTitle";
 import ErrorMessage from "../Shared/ErrorMessage/ErrorMessage";
 import ShowRoute from "../Shared/ShowRoute/ShowRoute";
 
 const ReviewEdit = () => {
+   const {LogOut} = useContext(AuthContext); 
+   const navigate = useNavigate(); 
    const review = useLoaderData();
    const {
       _id,
@@ -88,10 +91,16 @@ const ReviewEdit = () => {
          method: "PUT",
          headers: {
             "Content-Type": "application/json",
+            "authorization" : `Bearer ${localStorage.getItem('mr-dentist-token')}`
          },
          body: JSON.stringify({ messageOne, ratingsNew }),
       })
-         .then((res) => res.json())
+         .then((res) => {
+            if(res.status === 401 || res.status === 403){ 
+               return LogOut()
+            }
+            return res.json();
+         })
          .then((data) => {
             console.log(data);
             if (data.modifiedCount > 0) {
@@ -130,7 +139,7 @@ const ReviewEdit = () => {
                   <div>
                      <div className="flex flex-col w-full">
                         <label className="text-xl mb-2" htmlFor="name">
-                           Name :{" "}
+                           Name :
                         </label>
                         <input
                            className="w-full p-2  border-2 inputBox rounded-xl"
@@ -159,7 +168,7 @@ const ReviewEdit = () => {
 
                      <div className="flex flex-col w-full">
                         <label className="text-xl mb-2" htmlFor="email">
-                           {" "}
+                           
                            Email :
                         </label>
                         <input
@@ -173,7 +182,7 @@ const ReviewEdit = () => {
                      </div>
                      <div className="flex flex-col w-full">
                         <label className="text-xl mb-2" htmlFor="service_id">
-                           service Id :{" "}
+                           service Id :
                         </label>
                         <input
                            className="w-full p-2  border-2 inputBox rounded-xl"
@@ -188,7 +197,7 @@ const ReviewEdit = () => {
                      </div>
                      <div className="flex flex-col w-full">
                         <label className="text-xl mb-2" htmlFor="ratings">
-                           Ratings :{" "}
+                           Ratings :
                         </label>
                         <input
                            className="w-full p-2  border-2 inputBox rounded-xl"

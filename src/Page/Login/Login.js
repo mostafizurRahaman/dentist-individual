@@ -5,6 +5,7 @@ import { BsGithub, BsGoogle } from 'react-icons/bs';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import useTitle from '../../Hooks/useTitle';
+import { RiLogoutBoxFill } from 'react-icons/ri';
 const Login = () => {
    const {LogIn,  GithubSignIn, GoogleSignIn} = useContext(AuthContext); 
    const [userInfo, setUserInfo] = useState({ 
@@ -88,7 +89,25 @@ const Login = () => {
       .then(res => {
          const user = res.user; 
          console.log(user); 
-         navigate(from, {replace: true})
+         const currentUser = {
+            email : user?.email, 
+         }
+         fetch('http://localhost:5000/jwt', {
+            method: 'post', 
+            headers: {
+               'Content-Type' : 'application/json', 
+            }, 
+            body: JSON.stringify(currentUser)
+         })
+         .then(res => res.json())
+         .then(data => {
+            if(data.token){
+               localStorage.setItem('mr-dentist-token', data.token);           navigate(from, {replace: true}); 
+               e.target.reset(); 
+            }
+         })
+         .catch(err => err.json()); 
+         
       })
       .catch(err => {
          setError({...error, general: err.message})
@@ -100,7 +119,28 @@ const Login = () => {
       GoogleSignIn()
       .then(res => {
          const user = res.user; 
-         console.log(user); 
+         const currentUser = {
+            email : user?.email, 
+         }
+         fetch('http://localhost:5000/jwt', {
+            method: 'post', 
+            headers: {
+               'Content-Type' : 'application/json', 
+            }, 
+            body: JSON.stringify(currentUser)
+         })
+         .then(res => res.json())
+         .then(data => {
+            if(data.token){
+               localStorage.setItem('mr-dentist-token', data.token);           navigate(from, {replace: true}); 
+               Swal.fire(
+                  'Congratulations!!!',
+                  'User Login Successfully!',
+                  'success'
+                );
+            }
+         })
+         .catch(err => err.json());
       })
       .catch(err => {
          setError({...error, general: err.message})
@@ -112,7 +152,24 @@ const Login = () => {
       GithubSignIn()
       .then(res => {
          const user = res.user; 
-         console.log(user); 
+         const currentUser = {
+            email : user?.email, 
+         }
+         fetch('http://localhost:5000/jwt', {
+            method: 'post', 
+            headers: {
+               'Content-Type' : 'application/json', 
+            }, 
+            body: JSON.stringify(currentUser)
+         })
+         .then(res => res.json())
+         .then(data => {
+            if(data.token){
+               localStorage.setItem('mr-dentist-token', data.token);           navigate(from, {replace: true}); 
+                
+            }
+         })
+         .catch(err => err.json());
       })
       .catch(err => {
          setError({...error, general: err.message})

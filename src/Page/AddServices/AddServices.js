@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import ShowRoute from '../Shared/ShowRoute/ShowRoute';
 import toast from 'react-hot-toast';
 import ErrorMessage from '../Shared/ErrorMessage/ErrorMessage';
 import Swal from 'sweetalert2'
 import useTitle from '../../Hooks/useTitle';
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 const AddServices = () => {
+   const {LogOut} = useContext(AuthContext); 
    const [serviceInfo , setServiceInfo] = useState({
       service: '', 
       price: '', 
@@ -106,10 +108,16 @@ const AddServices = () => {
          method: 'POST', 
          headers: {
             "content-type": 'application/json', 
+            "authorization" : `Bearer ${localStorage.getItem('mr-dentist-token')}` 
          }, 
          body: JSON.stringify({service ,price, image, ratings, description })
       })
-      .then(res => res.json())
+      .then(res => {
+         if(res.status === 401 || res.status === 403){
+            return LogOut();
+         }
+         return res.json()
+      })
       .then(data =>{        
          if(data.acknowledged){
             Swal.fire(

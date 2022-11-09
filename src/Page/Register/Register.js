@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import ErrorMessage from '../Shared/ErrorMessage/ErrorMessage';
 import {BsGithub, BsGoogle} from 'react-icons/bs'; 
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import Swal from 'sweetalert2'
 import useTitle from '../../Hooks/useTitle';
 const Register = () => {
+   const navigate = useNavigate(); 
    const {createUser, addInfo, GithubSignIn, GoogleSignIn} = useContext(AuthContext); 
    const [userInfo, setUserInfo] = useState({
       name: '', 
@@ -109,14 +110,31 @@ const Register = () => {
       createUser(email, password)
       .then(res => {
          const user = res.user; 
-         console.log(user);          
-         Swal.fire(
-           'Congratulations!!!',
-           'User Created Successfully!',
-           'success'
-         )
-         handleProfile({displayName: name, photoURL:  image})
-         e.target.reset(); 
+         const currentUser = {
+            email : user?.email, 
+         }
+         fetch('http://localhost:5000/jwt', {
+            method: 'post', 
+            headers: {
+               'Content-Type' : 'application/json', 
+            }, 
+            body: JSON.stringify(currentUser)
+         })
+         .then(res => res.json())
+         .then(data => {
+            if(data.token){
+               localStorage.setItem('mr-dentist-token', data.token);           navigate("/");    
+               Swal.fire(
+                  'Congratulations!!!',
+                  'User Created Successfully!',
+                  'success'
+                )
+                handleProfile({displayName: name, photoURL:  image})
+                e.target.reset();             
+            }
+         })
+         .catch(err => err.json());          
+         
       })
       .catch(err => {
          setError({...error, general: err.message})
@@ -135,7 +153,29 @@ const Register = () => {
       GoogleSignIn()
       .then(res => {
          const user = res.user; 
-         console.log(user); 
+         const currentUser = {
+            email : user?.email, 
+         }
+         fetch('http://localhost:5000/jwt', {
+            method: 'post', 
+            headers: {
+               'Content-Type' : 'application/json', 
+            }, 
+            body: JSON.stringify(currentUser)
+         })
+         .then(res => res.json())
+         .then(data => {
+            if(data.token){
+               localStorage.setItem('mr-dentist-token', data.token);           navigate("/");    
+               Swal.fire(
+                  'Congratulations!!!',
+                  'Google Sign in Successful!',
+                  'success'
+                )
+                          
+            }
+         })
+         .catch(err => err.json());
       })
       .catch(err => {
          setError({...error, general: err.message})
@@ -147,7 +187,28 @@ const Register = () => {
       GithubSignIn()
       .then(res => {
          const user = res.user; 
-         console.log(user); 
+         const currentUser = {
+            email : user?.email, 
+         }
+         fetch('http://localhost:5000/jwt', {
+            method: 'post', 
+            headers: {
+               'Content-Type' : 'application/json', 
+            }, 
+            body: JSON.stringify(currentUser)
+         })
+         .then(res => res.json())
+         .then(data => {
+            if(data.token){
+               localStorage.setItem('mr-dentist-token', data.token);           navigate("/");    
+               Swal.fire(
+                  'Congratulations!!!',
+                  'GitHub Singin Successful!',
+                  'success'
+                )            
+            }
+         })
+         .catch(err => err.json());
       })
       .catch(err => {
          setError({...error, general: err.message})

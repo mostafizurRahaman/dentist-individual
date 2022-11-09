@@ -5,7 +5,7 @@ import ErrorMessage from "../Shared/ErrorMessage/ErrorMessage";
 
 
 const ReviewForm = ({singleService , reviews, setReviews}) => {
-   const {user} = useContext(AuthContext); 
+   const {user, LogOut} = useContext(AuthContext); 
    const {service, _id} = singleService; 
    const  [ReviewInfo , setReviewInfo] = useState({
       email: user?.email, 
@@ -77,10 +77,16 @@ const handleSubmit = (e) => {
       method: 'POST', 
       headers: {
          "content-type": 'application/json', 
+          "authorization" : `Bearer ${localStorage.getItem('mr-dentist-token')}`
       }, 
       body: JSON.stringify({email , reviewer, profile, ratings, message, service_name, service_id})
    })
-   .then(res => res.json())
+   .then(res => {
+      if(res.status === 401 || res.status === 403){
+         return LogOut(); 
+      }
+     return  res.json()
+   })
    .then(data => {
          if(data.acknowledged){
             Swal.fire(

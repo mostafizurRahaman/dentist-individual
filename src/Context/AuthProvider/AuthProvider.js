@@ -21,6 +21,7 @@ const AuthProvider = ({children}) => {
       return signInWithEmailAndPassword(auth, email, password); 
    }
    const LogOut = () =>{
+      localStorage.removeItem('mr-dentist-token'); 
       setLoading(true); 
       return signOut(auth); 
    }

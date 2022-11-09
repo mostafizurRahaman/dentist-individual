@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 const MySingleReview = ({review, handleDelete}) => {
    const {user} = useContext(AuthContext); 
- const {_id, message, email , ratings, service_id , service_name, profile, reviewer, dateField} = review; 
+ const {_id, message, email , ratings, service_name, profile, reviewer} = review; 
  const remaining = 5 -ratings; 
   
 

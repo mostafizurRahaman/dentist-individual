@@ -54,7 +54,9 @@ const Routes = createBrowserRouter([
          {
             path: '/reviews-edit/:id', 
             element: <PrivateRoute><ReviewEdit> </ReviewEdit></PrivateRoute>, 
-            loader: async({params}) => fetch(`http://localhost:5000/reviews?id=${params.id}`)
+            loader: async({params}) => fetch(`http://localhost:5000/review/${params.id}`, {headers : {
+               "authorization" : `Bearer ${localStorage.getItem('mr-dentist-token')}`,
+            }})
          }
       ]
    }

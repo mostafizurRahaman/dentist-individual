@@ -6,14 +6,23 @@ import MySingleReview from '../SingleReview/MySingleReview';
 
 
 const MyReviews = () => {
-   const {user, setSpinner} = useContext(AuthContext); 
+   const {user, setSpinner, LogOut} = useContext(AuthContext); 
    const [reviews, setReviews] = useState([]);
    useTitle('MyReviews'); 
    
     useEffect(()=>{
          setSpinner(true); 
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`)
-        .then(res => res.json())
+        fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
+            headers:{
+               "authorization" : `Bearer ${localStorage.getItem('mr-dentist-token')}`
+            }, 
+        })
+        .then(res => {
+            if(res.status === 401 || res.status === 403){
+               return LogOut()
+            }
+            return res.json(); 
+        })
         .then(data => {
             setReviews(data);
             setSpinner(false)
@@ -30,8 +39,16 @@ const MyReviews = () => {
       if(confirm){
          fetch(`http://localhost:5000/reviews/${_id}`, {
             method: 'DELETE', 
+            headers:{
+               "authorization" : `Bearer ${localStorage.getItem('mr-dentist-token')}`
+            }, 
          })
-         .then(res => res.json())
+         .then(res =>{ 
+            if(res.status === 401 || res.status === 403){
+               return LogOut();
+            }
+            return res.json()
+         })
          .then(data => {
             if(data.deletedCount){
                const remaining  = reviews.filter(r => r._id !== _id); 
