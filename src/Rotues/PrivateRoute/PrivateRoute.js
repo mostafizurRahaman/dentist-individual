@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import Myspinner from '../../Page/Shared/MySpinner/Myspinner';
 
 
 const PrivateRoute = ({children}) => {
@@ -8,7 +9,7 @@ const PrivateRoute = ({children}) => {
     const location = useLocation(); 
     if(loading){
       return <div className='w-full h-screen text-red-500 font-bold'>
-           <h1>loading.........</h1>
+           <Myspinner></Myspinner>
       </div>
     }
     if(user && user?.email){

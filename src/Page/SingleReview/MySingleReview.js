@@ -4,6 +4,7 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import './SingleReview.css'; 
 import { AiTwotoneDelete} from 'react-icons/ai'; 
 import { FaEdit} from 'react-icons/fa'; 
+import { Link } from 'react-router-dom';
 
 
 
@@ -22,7 +23,7 @@ const MySingleReview = ({review, handleDelete}) => {
          user?.email === email && 
          <div className='w-full  text-4xl text-white flex justify-around bottom-3 absolute'>
              <AiTwotoneDelete onClick={()=> handleDelete(_id)} className='text-red-500' ></AiTwotoneDelete>
-             <FaEdit className='text-green-500'></FaEdit>
+             <Link to={`/reviews-edit/${_id}`}> <FaEdit  className='text-green-500'></FaEdit> </Link>
          </div>
         }
          <div className='text-center p-5 space-y-3 mb-10'>

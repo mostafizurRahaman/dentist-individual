@@ -10,6 +10,7 @@ export const AuthContext = createContext();
 const AuthProvider = ({children}) => {
    const [user, setUser] = useState(null); 
    const [loading, setLoading] = useState(true); 
+   const [spinner, setSpinner] = useState(false); 
    
    const createUser = (email, password) => {
       setLoading(true); 
@@ -51,7 +52,7 @@ const AuthProvider = ({children}) => {
    }
 
   }, [])
-   const authInfo = {createUser, LogIn, LogOut, GoogleSignIn, GithubSignIn, addInfo, user, loading}
+   const authInfo = {createUser, LogIn, LogOut, GoogleSignIn, GithubSignIn, addInfo, user, loading, spinner, setSpinner}
    return (
     <AuthContext.Provider value={authInfo}>
             {children}

@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import ErrorMessage from '../Shared/ErrorMessage/ErrorMessage';
 import { BsGithub, BsGoogle } from 'react-icons/bs'; 
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import useTitle from '../../Hooks/useTitle';
 const Login = () => {
@@ -16,7 +16,9 @@ const Login = () => {
     password:"",
     general:''
    })
-
+   const navigate = useNavigate(); 
+   const location = useLocation(); 
+   const from = location.state?.from?.pathname || '/'
 
 
    const handleEmail = (e) => {
@@ -86,6 +88,7 @@ const Login = () => {
       .then(res => {
          const user = res.user; 
          console.log(user); 
+         navigate(from, {replace: true})
       })
       .catch(err => {
          setError({...error, general: err.message})

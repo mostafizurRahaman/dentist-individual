@@ -1,15 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import useTitle from '../../Hooks/useTitle';
 import ShowRoute from '../Shared/ShowRoute/ShowRoute';
 import SingleServices from '../Shared/SingleService/SingleServices';
 
 const Services = () => {
+   const {setSpinner} = useContext(AuthContext); 
    const [services, setServices] = useState([]); 
    useEffect(()=>{
+            setSpinner(true)
          fetch('http://localhost:5000/services')
          .then(res => res.json())
-         .then(data => setServices(data))
+         .then(data => {
+            setServices(data)
+            setSpinner(false)
+         })
          .catch(err => console.log(err))
+         .finally(()=>{
+            setSpinner(false)
+         })
    }, [])
    useTitle('Services')
    return (

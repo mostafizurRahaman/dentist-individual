@@ -6,17 +6,22 @@ import MySingleReview from '../SingleReview/MySingleReview';
 
 
 const MyReviews = () => {
-   const {user} = useContext(AuthContext); 
+   const {user, setSpinner} = useContext(AuthContext); 
    const [reviews, setReviews] = useState([]);
    useTitle('MyReviews'); 
    
     useEffect(()=>{
+         setSpinner(true); 
         fetch(`http://localhost:5000/reviews?email=${user?.email}`)
         .then(res => res.json())
         .then(data => {
             setReviews(data);
+            setSpinner(false)
         })
-        .catch(err => console.log(err)); 
+        .catch(err => console.log(err))
+        .finally(()=>{
+            setSpinner(false)
+        })
     },[user?.email])
 
 
@@ -56,6 +61,10 @@ const MyReviews = () => {
                <h2>No Reviews Found</h2>
               </div>
             }
+         <div>
+
+         </div>
+         
       </div>
    );
 };

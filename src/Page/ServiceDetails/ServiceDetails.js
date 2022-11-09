@@ -20,8 +20,12 @@ const ServiceDetails = () => {
    useEffect(()=>{
       fetch(`http://localhost:5000/reviews/${_id}`)
       .then(res =>  res.json())
-      .then(data => setReviews(data))
-      .catch(err => console.log(err));  
+      .then(data =>{ 
+         setReviews(data); 
+         
+      })
+      .catch(err => console.log(err))
+     
    }, [_id, reviews])
 
    useTitle(service);
