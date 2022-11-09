@@ -103,6 +103,11 @@ const Login = () => {
          .then(data => {
             if(data.token){
                localStorage.setItem('mr-dentist-token', data.token);           navigate(from, {replace: true}); 
+               Swal.fire(
+                  'Congratulations!!!',
+                  'User Login Successfully!',
+                  'success'
+                );
                e.target.reset(); 
             }
          })
@@ -135,7 +140,7 @@ const Login = () => {
                localStorage.setItem('mr-dentist-token', data.token);           navigate(from, {replace: true}); 
                Swal.fire(
                   'Congratulations!!!',
-                  'User Login Successfully!',
+                  'Github Sign In Successfully!',
                   'success'
                 );
             }
@@ -166,7 +171,11 @@ const Login = () => {
          .then(data => {
             if(data.token){
                localStorage.setItem('mr-dentist-token', data.token);           navigate(from, {replace: true}); 
-                
+               Swal.fire(
+                  'Congratulations!!!',
+                  'Github Sign In Successfully!',
+                  'success'
+                );
             }
          })
          .catch(err => err.json());
