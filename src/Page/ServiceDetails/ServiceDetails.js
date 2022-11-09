@@ -48,7 +48,7 @@ const ServiceDetails = () => {
          </section>
          <section>
             {
-               user?.uid ?  <ReviewForm></ReviewForm> : <div className='my-10  flex items-center justify-center animate-bounce hover:animate-none '>
+               user?.uid ?  <ReviewForm singleService={singleService} ></ReviewForm> : <div className='my-10  flex items-center justify-center animate-bounce hover:animate-none '>
                 <Link className='bg-blue-500 text-white px-3 py-2 rounded-xl hover:bg-orange-600 duration-1000' to='/login'>  <h4 className='text-2xl'>For writing  a review , Please Login</h4></Link>
                </div>
             }
