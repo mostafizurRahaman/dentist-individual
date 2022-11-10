@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layout/Main/Main";
 import AddServices from "../../Page/AddServices/AddServices";
+import Blog from "../../Page/Blog/Blog";
 import Home from "../../Page/Home/Home/Home";
 import Login from "../../Page/Login/Login";
 import MyReviews from "../../Page/MyReviews/MyReviews";
@@ -57,6 +58,10 @@ const Routes = createBrowserRouter([
             loader: async({params}) => fetch(`http://localhost:5000/review/${params.id}`, {headers : {
                "authorization" : `Bearer ${localStorage.getItem('mr-dentist-token')}`,
             }})
+         }, 
+         {
+            path: '/blog', 
+            element: <Blog></Blog>
          }
       ]
    }

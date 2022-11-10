@@ -15,6 +15,7 @@ const Header = () => {
          <div className="flex items-center gap-3 font-medium text-xl">
             <Link to="/home">Home</Link>
             <Link to="/services">Services</Link>
+            <Link to="/blog">Blog</Link>
 
             {user?.uid ? (
                <>

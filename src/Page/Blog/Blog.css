@@ -1,0 +1,31 @@
+.blog-container table, td, th, tr{
+   border: 2px solid orange; 
+}
+
+.blog-container h3{
+   margin-bottom: 10px;
+   background: black;
+   color: orangered;
+   padding: 10px 5px;
+   font-size: 20px;
+   border-radius: 5px;
+   padding-left: 10px;
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   -ms-border-radius: 5px;
+   -o-border-radius: 5px;
+}
+.blog-container td, th{
+   padding: 5px;  
+}
+
+.blog-container p{
+   margin-top: 20px;
+   font-size: 17px;
+}
+
+.blog-container thead{
+   background: rgb(56, 55, 55); 
+   font-size: 18px; 
+   color: orange; 
+}
