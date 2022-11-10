@@ -105,7 +105,7 @@ const ContactUs = () => {
       }
       setError({ ...error, general: "" });
 
-      fetch("http://localhost:5000/contacts", {
+      fetch("https://mr-dentist-server.vercel.app/contacts", {
          method: "POST",
          headers: {
             "content-type": "application/json",

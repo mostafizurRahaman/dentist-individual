@@ -1,0 +1,9 @@
+.errorPage{
+   background: linear-gradient(rgba(0, 0, 0, 0.594),  rgba(0, 0, 0, 0.557)), url('../../Assets/erroImage.jpg') no-repeat;
+   background-size: cover; 
+   background-position: center center;
+   background-attachment: fixed;
+   width: 100%;
+   min-height: 100vh;
+
+}

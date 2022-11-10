@@ -7,8 +7,8 @@ import ErrorMessage from "../Shared/ErrorMessage/ErrorMessage";
 import ShowRoute from "../Shared/ShowRoute/ShowRoute";
 
 const ReviewEdit = () => {
-   const {LogOut} = useContext(AuthContext); 
-   const navigate = useNavigate(); 
+   const { LogOut } = useContext(AuthContext);
+   const navigate = useNavigate();
    const review = useLoaderData();
    const {
       _id,
@@ -87,17 +87,17 @@ const ReviewEdit = () => {
          service_id,
       });
 
-      fetch(`http://localhost:5000/reviews/${_id}`, {
+      fetch(`https://mr-dentist-server.vercel.app/reviews/${_id}`, {
          method: "PUT",
          headers: {
             "Content-Type": "application/json",
-            "authorization" : `Bearer ${localStorage.getItem('mr-dentist-token')}`
+            authorization: `Bearer ${localStorage.getItem("mr-dentist-token")}`,
          },
          body: JSON.stringify({ messageOne, ratingsNew }),
       })
          .then((res) => {
-            if(res.status === 401 || res.status === 403){ 
-               return LogOut()
+            if (res.status === 401 || res.status === 403) {
+               return LogOut();
             }
             return res.json();
          })
@@ -105,18 +105,14 @@ const ReviewEdit = () => {
             console.log(data);
             if (data.modifiedCount > 0) {
                e.target.reset();
-               Swal.fire(
-                  'WOW!',
-                  'Updated Successfully!',
-                  'success'
-                ); 
+               Swal.fire("WOW!", "Updated Successfully!", "success");
             }
          })
          .catch((err) => {
             console.log(err);
          });
    };
-   useTitle('Update Review')
+   useTitle("Update Review");
    return (
       <div>
          <ShowRoute first="My Reviews" second="Update Form"></ShowRoute>
@@ -129,7 +125,8 @@ const ReviewEdit = () => {
             </h4>
             <form
                onSubmit={handleSubmit}
-               className="p-5 w-4/5 lg:w-3/5 rounded-2xl bg-blue-300  gap-5 flex flex-col"
+               
+               className="my-10 p-5 w-4/5 lg:w-3/5 rounded-2xl bg-blue-300  gap-5 flex flex-col"
                style={{
                   boxShadow:
                      "6px 6px 6px inset rgba(0, 0, 255, 0.3, -6px -6px 6px inset rgba(0, 0, 255, 0.3))",
@@ -168,7 +165,6 @@ const ReviewEdit = () => {
 
                      <div className="flex flex-col w-full">
                         <label className="text-xl mb-2" htmlFor="email">
-                           
                            Email :
                         </label>
                         <input
