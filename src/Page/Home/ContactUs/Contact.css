@@ -3,9 +3,10 @@
  background-position: left center ;
  background-size: cover;
  background-attachment: fixed;
+ 
 }
 
-.contact-form input, textarea{
+.contact-form input,.contact-form textarea{
    border: 3px solid #fff;
    color: white;
    letter-spacing: 2px;
