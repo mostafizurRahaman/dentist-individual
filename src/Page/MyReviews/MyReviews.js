@@ -70,7 +70,7 @@ const MyReviews = () => {
          {reviews.length >= 1 ? (
             <section className="p-10 flex flex-col items-center ">
                <h2 className="text-4xl text-blue-500 before:w-1/2 before:h-1 before:inline-block pb-3  before:absolute inline-block relative before:bottom-0 before:bg-blue-500 text-center my-5  ">
-                  Customer Reviews
+                 My Reviews
                </h2>
 
                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 gap-y-5 p-5  singleReviewContainer ">
