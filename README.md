@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+# [Mr Dentist :](https://mr-dentist-b4d00.web.app/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### Mr dentist is a personal project for a destist. That website contain some services and sell service and get review from customer . There are many featue , add service, post review to service, and see own review , update and delete own review.
 
-## Available Scripts
+#### Also have a contact form for sending message to website owner when you want to learn more .
 
-In the project directory, you can run:
+# Features
 
-### `npm start`
+-  #### [Add Sevices :](https://mr-dentist-b4d00.web.app/add-services) To add new service .
+-  #### Add Review : To add new review
+-  #### Show Others Review : To see other s review
+-  #### [See your reviews o MyReview Route](https://mr-dentist-b4d00.web.app/my-reviews)
+-  #### You can modify your review and also delete single review by review id;
+-  #### You can also see single service details by service id .
+-  #### [Blog:](https://mr-dentist-b4d00.web.app/blog) For write blog.
+-  #### 404 Error Page: When gone wrong route 400 page shown .
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Technologies Applied :
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-  #### React : For FrontEnd Development
+-  #### React Photo View Package: To Show photos full screen when click
+-  #### Html (JSX) + Css Applied for structure and design
+-  #### JavaScript : For Fucntionalities.
+-  #### Express & NodeJS : For server createa a simple server.
+-  #### MongoDB : Use As Database to store data.
+-  #### JWT : JSON WEB TOKEN use for authorazation and save private Api.
+-  #### React Icons : For use some icons
+-  #### React Loader : For show spinner when data load.
+-  #### Custom Hook: For Show Dynamic Title
+-  #### Tailwind Css : Use tailwind css for design easily .
