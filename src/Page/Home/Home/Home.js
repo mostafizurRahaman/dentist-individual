@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import useTitle from '../../../Hooks/useTitle';
 import SingleServices from '../../Shared/SingleService/SingleServices';
 import Banner from '../Banner/Banner';
+import Skills from '../Skills/Skills';
 
 const Home = () => {
    const [services, setServices] =  useState([]); 
@@ -19,7 +20,7 @@ const Home = () => {
         <section className='flex items-center justify-center flex-col'>
             <h2 className='text-3xl text-blue-500 before:w-1/2 before:h-1 before:inline-block pb-3  before:absolute inline-block relative before:bottom-0 before:bg-blue-500 text-center my-5  mt-10 '>My Services</h2>
             
-            <div className='grid grid-cols-3 gap-10 p-12 '>
+            <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-10 p-12 '>
                   {
                      services.map(service => <SingleServices key={service._id} everyService={service}></SingleServices>)
                   }
@@ -30,7 +31,7 @@ const Home = () => {
                </button>
             </Link>
         </section>
-
+       <Skills></Skills>
       </div>
    );
 };

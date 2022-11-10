@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import useTitle from '../../Hooks/useTitle';
 import ShowRoute from '../Shared/ShowRoute/ShowRoute'
@@ -53,6 +54,11 @@ const MyReviews = () => {
             if(data.deletedCount){
                const remaining  = reviews.filter(r => r._id !== _id); 
                setReviews([...remaining]);   
+               Swal.fire(
+                  'So Sad',
+                  'You delete one review!',
+                  'success'
+                );
             }
          })
          .catch(err => console.log(err)); 
