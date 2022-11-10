@@ -6,7 +6,7 @@ const MyLoader = () => {
    const {spinner} = useContext(AuthContext); 
    return (
      
-           <div className={`absolute top-0 left-0 right-0 bottom-0  flex items-center justify-center h-screen  ${spinner ? 'block' : 'hidden'}`}>
+           <div className={`absolute top-0 left-0 right-0 bottom-0  flex items-center justify-center h-screen z-50 ${spinner ? 'block' : 'hidden'}`}>
                    <MagnifyingGlass
             
                visible={spinner}

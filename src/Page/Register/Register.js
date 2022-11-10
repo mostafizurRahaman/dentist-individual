@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 import useTitle from "../../Hooks/useTitle";
 const Register = () => {
    const navigate = useNavigate();
-   const { createUser, addInfo, GithubSignIn, GoogleSignIn } =
+   const { createUser, addInfo, GithubSignIn, GoogleSignIn, setSpinner } =
       useContext(AuthContext);
    const [userInfo, setUserInfo] = useState({
       name: "",
@@ -99,6 +99,7 @@ const Register = () => {
 
    const handleSubmit = (e) => {
       setError({ ...error, general: "" });
+      setSpinner(true);
       e.preventDefault();
       const { name, email, image, password } = userInfo;
       if (!name || !email || !image || !password) {
@@ -123,6 +124,7 @@ const Register = () => {
                .then((data) => {
                   if (data.token) {
                      localStorage.setItem("mr-dentist-token", data.token);
+                     setSpinner(false);
                      navigate("/");
                      Swal.fire(
                         "Congratulations!!!",
@@ -137,7 +139,10 @@ const Register = () => {
          })
          .catch((err) => {
             setError({ ...error, general: err.message });
-         });
+         })
+         .finally(()=>{
+            setSpinner(false);
+         })
    };
 
    const handleProfile = (profile) => {
@@ -148,6 +153,7 @@ const Register = () => {
 
    const handleGoogleSignIn = () => {
       setError({ ...error, general: "" });
+      setSpinner(true);
       GoogleSignIn()
          .then((res) => {
             const user = res.user;
@@ -166,6 +172,7 @@ const Register = () => {
                   if (data.token) {
                      localStorage.setItem("mr-dentist-token", data.token);
                      navigate("/");
+                     setSpinner(false);
                      Swal.fire(
                         "Congratulations!!!",
                         "Google Sign in Successful!",
@@ -177,11 +184,15 @@ const Register = () => {
          })
          .catch((err) => {
             setError({ ...error, general: err.message });
-         });
+         })
+         .finally(()=>{
+            setSpinner(false);
+         })
    };
 
    const handleGithubSignIn = () => {
       setError({ ...error, general: "" });
+      setSpinner(true);
       GithubSignIn()
          .then((res) => {
             const user = res.user;
@@ -200,6 +211,7 @@ const Register = () => {
                   if (data.token) {
                      localStorage.setItem("mr-dentist-token", data.token);
                      navigate("/");
+                     setSpinner(false);
                      Swal.fire(
                         "Congratulations!!!",
                         "GitHub Singin Successful!",
@@ -211,7 +223,10 @@ const Register = () => {
          })
          .catch((err) => {
             setError({ ...error, general: err.message });
-         });
+         })
+         .finally(()=>{
+            setSpinner(false);
+         })
    };
 
    useTitle("Registration");

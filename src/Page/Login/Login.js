@@ -5,9 +5,9 @@ import { BsGithub, BsGoogle } from "react-icons/bs";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useTitle from "../../Hooks/useTitle";
-import { RiLogoutBoxFill } from "react-icons/ri";
+
 const Login = () => {
-   const { LogIn, GithubSignIn, GoogleSignIn } = useContext(AuthContext);
+   const { LogIn, GithubSignIn, GoogleSignIn, setSpinner } = useContext(AuthContext);
    const [userInfo, setUserInfo] = useState({
       email: "",
       password: "",
@@ -22,6 +22,7 @@ const Login = () => {
    const from = location.state?.from?.pathname || "/";
 
    const handleEmail = (e) => {
+     
       const email = e.target.value;
       if (!email) {
          setError({ ...error, email: "please enter an email." });
@@ -74,6 +75,7 @@ const Login = () => {
    };
 
    const handleSubmit = (e) => {
+      setSpinner(true);
       setError({ ...error, general: "" });
       e.preventDefault();
       const { email, password } = userInfo;
@@ -107,17 +109,22 @@ const Login = () => {
                         "success"
                      );
                      e.target.reset();
+                     setSpinner(false);
                   }
                })
                .catch((err) => err.json());
          })
          .catch((err) => {
             setError({ ...error, general: err.message });
-         });
+         })
+         .finally(()=>{
+            setSpinner(false);
+         })
    };
 
    const handleGoogleSignIn = () => {
       setError({ ...error, general: "" });
+      setSpinner(true);
       GoogleSignIn()
          .then((res) => {
             const user = res.user;
@@ -141,17 +148,22 @@ const Login = () => {
                         "Github Sign In Successfully!",
                         "success"
                      );
+                     setSpinner(false);
                   }
                })
                .catch((err) => err.json());
          })
          .catch((err) => {
             setError({ ...error, general: err.message });
-         });
+         })
+         .finally(()=>{
+            setSpinner(false);
+         })
    };
 
    const handleGithubSignIn = () => {
       setError({ ...error, general: "" });
+      setSpinner(true);
       GithubSignIn()
          .then((res) => {
             const user = res.user;
@@ -175,13 +187,17 @@ const Login = () => {
                         "Github Sign In Successfully!",
                         "success"
                      );
+                     setSpinner(false);
                   }
                })
                .catch((err) => err.json());
          })
          .catch((err) => {
             setError({ ...error, general: err.message });
-         });
+         })
+         .finally(()=>{
+            setSpinner(false);
+         })
    };
 
    useTitle("Login");
