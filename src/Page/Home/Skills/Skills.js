@@ -6,7 +6,7 @@ import React from 'react';
 const Skills = () => {
    return (
       <div className='flex items-center justify-center flex-col gap-2 px-12'>
-         <h2 className='text-3xl text-blue-500 before:w-1/2 before:h-1 before:inline-block pb-3  before:absolute inline-block relative before:bottom-0 before:bg-blue-500 text-center my-5  mt-10 '>My Skills depends on my work </h2>
+         <h2 className='text-4xl text-blue-500 before:w-1/2 before:h-1 before:inline-block pb-3  before:absolute inline-block relative before:bottom-0 before:bg-blue-500 text-center my-5  mt-10 '>My Skills depends on my work </h2>
          <p className='text-center text-xl text-medium'>I want provide the best dental care for patient. Dental care is now on your door </p>
          <div className='grid grid-cols-1 md:grid-cols-2 my-10 lg:grid-cols-4 gap-10 '>
               <div className='py-20 px-5 text-center bg-orange-200 space-y-4 rounded-2xl '>

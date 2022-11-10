@@ -1,0 +1,22 @@
+.contact-form{
+ background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url("../../../Assets/contact-section-background.jpg") no-repeat; 
+ background-position: left center ;
+ background-size: cover;
+ background-attachment: fixed;
+}
+
+.contact-form input, textarea{
+   border: 3px solid #fff;
+   color: white;
+   letter-spacing: 2px;
+   
+}
+.contact-form label{
+   color: white;
+}
+.contact-form input:focus{
+   font-size: 1.1em;
+   border: none;
+   padding: 15px 20px;
+   background: none;
+}
