@@ -11,7 +11,7 @@ const MyReviews = () => {
    useTitle("MyReviews");
 
    useEffect(() => {
-      setSpinner(true);
+     
       fetch(
          `https://mr-dentist-server.vercel.app/reviews?email=${user?.email}`,
          {
@@ -24,18 +24,17 @@ const MyReviews = () => {
       )
          .then((res) => {
             if (res.status === 401 || res.status === 403) {
+               
                return LogOut();
             }
             return res.json();
          })
          .then((data) => {
             setReviews(data);
-            setSpinner(false);
+            
          })
          .catch((err) => console.log(err))
-         .finally(() => {
-            setSpinner(false);
-         });
+         
    }, [user?.email]);
 
    const handleDelete = (_id) => {
