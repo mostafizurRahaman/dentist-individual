@@ -6,7 +6,7 @@ import ShowRoute from "../Shared/ShowRoute/ShowRoute";
 import MySingleReview from "../SingleReview/MySingleReview";
 
 const MyReviews = () => {
-   const { user, setSpinner, LogOut } = useContext(AuthContext);
+   const { user,  LogOut } = useContext(AuthContext);
    const [reviews, setReviews] = useState([]);
    useTitle("MyReviews");
 

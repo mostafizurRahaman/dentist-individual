@@ -93,7 +93,7 @@ const Login = () => {
             };
             fetch("https://mr-dentist-server.vercel.app/jwt", {
                method: "post",
-               headers: {
+               headers: {  
                   "Content-Type": "application/json",
                },
                body: JSON.stringify(currentUser),
