@@ -8,7 +8,7 @@ import MyLoader from "./Page/Shared/MySpinner/MyLoader";
 function App() {
    
    AOS.init({
-      duration: 2000, 
+      duration: 1000, 
       delay: 0, 
   })
    return (
