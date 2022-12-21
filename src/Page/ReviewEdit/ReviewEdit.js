@@ -106,6 +106,7 @@ const ReviewEdit = () => {
             if (data.modifiedCount > 0) {
                e.target.reset();
                Swal.fire("WOW!", "Updated Successfully!", "success");
+               navigate("/my-reviews"); 
             }
          })
          .catch((err) => {
