@@ -10,9 +10,9 @@ const Footer = () => {
             <div className="flex flex-col   text-center text-xl text-white w-full md:w-2/5 ">
                <h2 className='text-3xl border-b-2 border-orange-500 pb-3 text-orange-500 before:w-1/2 before:h-1 text-center my-5  mt-10 '>Our pages </h2>
                <Link className="hover:text-orange-500 block duration-1000 border-b-2 py-3 border-white" to="/home">Home</Link>
-               <Link className="hover:text-orange-500 block duration-1000 border-b-2 py-3 border-white" to="/home">services</Link>
-               <Link className="hover:text-orange-500 block duration-1000 border-b-2 py-3 border-white" to="/myreivews">My Reviews</Link>
-               <Link className="hover:text-orange-500 block duration-1000  py-3" to="/">Add Service</Link>
+               <Link className="hover:text-orange-500 block duration-1000 border-b-2 py-3 border-white" to="/services">services</Link>
+               <Link className="hover:text-orange-500 block duration-1000 border-b-2 py-3 border-white" to="/my-reviews">My Reviews</Link>
+               <Link className="hover:text-orange-500 block duration-1000  py-3" to="/add-services">Add Service</Link>
             </div>
             <div className="text-white  w-full md:w-2/5">
                <h2 className='text-3xl border-b-2 border-orange-500 pb-3 text-orange-500 before:w-1/2 before:h-1 text-center my-5  mt-10 '>Contact with Social Media:</h2>

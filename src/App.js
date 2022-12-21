@@ -16,7 +16,6 @@ function App() {
          <MyLoader ></MyLoader>
          <RouterProvider router={Routes}></RouterProvider>
          <Toaster></Toaster>
-         
       </div>
    );
 }
