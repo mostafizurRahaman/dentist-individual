@@ -84,7 +84,7 @@ const MyReviews = () => {
                </div>
             </section>
          ) : (
-            <div className="text-6xl text-red-500 font-bold flex items-center justify-center h-60">
+            <div className="text-4xl text-center  md:text-6xl text-red-500 font-bold flex items-center justify-center h-60">
                <h2>No Reviews Found</h2>
             </div>
          )}

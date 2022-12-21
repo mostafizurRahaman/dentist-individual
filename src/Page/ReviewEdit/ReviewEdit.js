@@ -120,7 +120,7 @@ const ReviewEdit = () => {
             <h2 className="text-4xl text-blue-500 before:w-1/2 before:h-1 before:inline-block pb-3  before:absolute inline-block relative before:bottom-0 before:bg-blue-500 text-center my-16  mt-10 ">
                Update Review
             </h2>
-            <h4 className="text-red-500 text-4xl  mb-3 ">
+            <h4 className="text-red-500 text-3xl  md:text-4xl  mb-3 ">
                You Can edit only Ratings and Text{" "}
             </h4>
             <form
